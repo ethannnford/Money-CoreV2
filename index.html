@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Money Core">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1f3864">
+<title>Money Core</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <h1 id="hdrTitle">📊 Money Core</h1>
+      <div class="sub" id="hdrSub">Run your jobs. Win the money.</div>
+    </div>
+    <button class="btn ghost sm" id="hdrBtn" style="display:none" onclick="hdrAction()"></button>
+  </header>
+
+  <main id="view" class="view"></main>
+
+  <div class="disclaimer">
+    Money Core is an estimating &amp; job-tracking tool, not accounting, tax, or legal advice.
+    Confirm tax &amp; business numbers with your accountant. Your data is saved only on this device —
+    back it up regularly in Settings, since clearing your browser history will erase it.
+  </div>
+</div>
+
+<nav class="bottom">
+  <button data-nav="dashboard" onclick="go('dashboard')"><span class="ic">🏠</span>Home</button>
+  <button data-nav="jobs" onclick="go('jobs')"><span class="ic">🗂️</span>Jobs</button>
+  <button class="fab" onclick="openScan()" aria-label="Scan a receipt"><span class="ic">📷</span></button>
+  <button data-nav="clients" onclick="go('clients')"><span class="ic">👥</span>Clients</button>
+  <button data-nav="settings" onclick="go('settings')"><span class="ic">⚙️</span>More</button>
+</nav>
+<input id="scanInput" type="file" accept="image/*" capture="environment" onchange="handleScan()" style="display:none">
+
+<div id="modalRoot"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -11,14 +11,17 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
-<link rel="stylesheet" href="styles.css?v=16">
+<link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body>
 <div class="app">
   <header>
-    <div>
-      <h1 id="hdrTitle">📊 Money Core</h1>
-      <div class="sub" id="hdrSub">Run your jobs. Win the money.</div>
+    <div class="hdrleft">
+      <button class="backbtn" id="backBtn" style="display:none" onclick="goBack()" aria-label="Back">←</button>
+      <div>
+        <h1 id="hdrTitle">📊 Money Core</h1>
+        <div class="sub" id="hdrSub">Run your jobs. Win the money.</div>
+      </div>
     </div>
     <button class="btn ghost sm" id="hdrBtn" style="display:none" onclick="hdrAction()"></button>
   </header>
@@ -43,6 +46,6 @@
 
 <div id="modalRoot"></div>
 
-<script src="app.js?v=16"></script>
+<script src="app.js?v=17"></script>
 </body>
 </html>

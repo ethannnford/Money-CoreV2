@@ -196,10 +196,22 @@ var pendingJobSearch='';
 function dashActive(){ var act=state.jobs.filter(function(j){return j.status==='won'||j.status==='in_progress';}); if(act.length===1){ go('job',act[0].id); } else { pendingJobSearch=''; go('jobs'); } }
 function filterByStatus(label){ pendingJobSearch=label; go('jobs'); }
 var skipDraftCapture=false;
+var navHist=[];
 function go(view, param){
   if(cur.view==='newbid' && view!=='newbid' && !skipDraftCapture){ captureDraft(); }
   skipDraftCapture=false;
+  if(cur.view!==view || (cur.param||null)!==(param||null)){
+    navHist.push({view:cur.view, param:cur.param});
+    if(navHist.length>50) navHist.shift();
+  }
   cur={view:view, param:param||null}; render(); window.scrollTo(0,0);
+}
+function goBack(){
+  if(!navHist.length){ cur={view:'dashboard', param:null}; render(); window.scrollTo(0,0); return; }
+  var prev=navHist.pop();
+  if(cur.view==='newbid' && prev.view!=='newbid' && !skipDraftCapture){ captureDraft(); }
+  skipDraftCapture=false;
+  cur={view:prev.view, param:prev.param||null}; render(); window.scrollTo(0,0);
 }
 function captureDraft(){
   var jn=document.getElementById('nb_jobname'); if(!jn) return;
@@ -238,6 +250,8 @@ function render(){
   else if(cur.view==='planner') el.innerHTML = viewPlanner();
   else if(cur.view==='job'){ el.innerHTML = viewJob(cur.param); afterJob(cur.param); }
   setHeader();
+  var bb=document.getElementById('backBtn');
+  if(bb) bb.style.display=(cur.view!=='dashboard' && navHist.length) ? 'flex' : 'none';
   applyLang();
 }
 function setHeader(){

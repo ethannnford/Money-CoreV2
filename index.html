@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=16">
 </head>
 <body>
 <div class="app">
@@ -36,13 +36,13 @@
   <button data-nav="dashboard" onclick="go('dashboard')"><span class="ic">🏠</span>Home</button>
   <button data-nav="jobs" onclick="go('jobs')"><span class="ic">🗂️</span>Jobs</button>
   <button class="fab" onclick="openScan()" aria-label="Scan a receipt"><span class="ic">📷</span></button>
-  <button data-nav="clients" onclick="go('clients')"><span class="ic">👥</span>Clients</button>
-  <button data-nav="settings" onclick="go('settings')"><span class="ic">⚙️</span>More</button>
+  <button data-nav="planner" onclick="go('planner')"><span class="ic">🗓️</span>Planner</button>
+  <button data-nav="more" onclick="openMore()"><span class="ic">⋯</span>More</button>
 </nav>
 <input id="scanInput" type="file" accept="image/*" capture="environment" onchange="handleScan()" style="display:none">
 
 <div id="modalRoot"></div>
 
-<script src="app.js"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>
